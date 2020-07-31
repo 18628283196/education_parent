@@ -1,0 +1,22 @@
+server:
+  port: 8110 #服务端口
+
+spring:
+  profiles:
+    active: dev #环境配置
+
+  application:
+    name: service-edu #服务名
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli_edu?serverTimezone=GMT%2B8
+    username: root
+    password: root
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+#mybatis日志
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

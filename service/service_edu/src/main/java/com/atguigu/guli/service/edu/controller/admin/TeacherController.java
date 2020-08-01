@@ -84,5 +84,12 @@ public class TeacherController {
         }
     }
 
+    @PutMapping("/getTeacherById/{id}")
+    @ApiOperation("根据id获取讲师对象")
+    public R getTeacherById(@ApiParam(value = "讲师id",required = true)@PathVariable String id){
+        Teacher teacher = teacherService.getById(id);
+        return R.ok().data("item", teacher);
+    }
+
 }
 

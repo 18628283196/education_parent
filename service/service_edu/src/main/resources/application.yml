@@ -19,4 +19,6 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+#通过xml设置了日志的具体操作，就不需要在这里设置了
+#logging:
+#  level: error

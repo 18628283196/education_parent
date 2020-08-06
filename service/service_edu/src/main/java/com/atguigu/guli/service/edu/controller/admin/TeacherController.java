@@ -91,5 +91,16 @@ public class TeacherController {
         return R.ok().data("item", teacher);
     }
 
+    @PutMapping("updateBycondition")
+    @ApiOperation("根据条件更新")
+    public R updateTeacherBycondition(@ApiParam(value = "讲师对象",required = true)@RequestBody Teacher teacher){
+        boolean b = teacherService.updateTeacherBycondition(teacher);
+        if (b){
+            return R.ok().message("更新成功");
+        }else{
+            return R.error().message("更新失败");
+        }
+    }
+
 }
 

@@ -7,8 +7,8 @@ import com.atguigu.guli.service.edu.service.TeacherService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 /**
  * <p>
@@ -51,5 +51,20 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             queryWrapper.le("join_date", joinDateEnd);
         }
         return baseMapper.selectPage(teacherPage, queryWrapper);
+    }
+
+    @Override
+    public boolean updateTeacherBycondition(Teacher teacher) {
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        if (teacher != null){
+            if(!StringUtils.isEmpty(teacher.getName())){
+                queryWrapper.eq("name", teacher.getName());
+            }
+            if (teacher.getLevel() != null){
+                queryWrapper.eq("level", teacher.getLevel());
+            }
+
+        }
+        return baseMapper.update(teacher, queryWrapper) == 1 ? true:false;
     }
 }

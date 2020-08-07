@@ -102,5 +102,16 @@ public class TeacherController {
         }
     }
 
+    @PutMapping("deleteBycondition")
+    @ApiOperation("根据条件删除")
+    public R deleteTeacherBycondition(@ApiParam(value = "讲师对象",required = true)@RequestBody Teacher teacher){
+        boolean b = teacherService.deleteTeacherBycondition(teacher);
+        if (b){
+            return R.ok().message("删除成功");
+        }else{
+            return R.error().message("删除失败");
+        }
+    }
+
 }
 

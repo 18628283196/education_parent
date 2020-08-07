@@ -67,4 +67,18 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         return baseMapper.update(teacher, queryWrapper) == 1 ? true:false;
     }
+
+    @Override
+    public boolean deleteTeacherBycondition(Teacher teacher) {
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        if (teacher != null){
+            if (StringUtils.isEmpty(teacher.getName())){
+                queryWrapper.likeRight("name", teacher.getName());
+            }
+            if (teacher.getLevel() != null){
+                queryWrapper.eq("level", teacher.getLevel());
+            }
+        }
+        return baseMapper.delete(queryWrapper) == 0 ? false:true;
+    }
 }

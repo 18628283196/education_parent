@@ -18,4 +18,6 @@ public interface TeacherService extends IService<Teacher> {
     Page<Teacher> selectPage(Page<Teacher> teacherPage, TeacherQueryVo teacherQueryVo);
 
     boolean updateTeacherBycondition(Teacher teacher);
+
+    boolean deleteTeacherBycondition(Teacher teacher);
 }
